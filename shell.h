@@ -46,9 +46,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *_strtok(char *str, const char *delimiter);
 
 /* setenv */
-int setenv(const char *name, const char *value, int overwrite);
+int _setenv(const char *name, const char *value, int overwrite);
 int is_environment(char *name);
-int add_env(char *env_name, char *env_value);
+int concat_env(char *env_name, char *env_value);
 void setenv_fnc(char **args);
 
 #endif

@@ -14,7 +14,7 @@ void setenv_fnc(char **args)
 
     if (i == 3) // Change this condition to 3 because args[0] is probably the command itself
     {
-        setenv(args[1], args[2], 1);
+        _setenv(args[1], args[2], 1);
 
         // Don't free args here. It might be used later in the program.
     }
