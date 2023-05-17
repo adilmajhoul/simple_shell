@@ -23,4 +23,9 @@ void handl_built_fnc(char *cmd, char **args)
 	{
 		setenv_fnc(args);
 	}
+
+	if (_strcmp(cmd, "unsetenv") == 0)
+	{
+		_unsetenv(args[1]);
+	}
 }
