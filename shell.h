@@ -36,7 +36,7 @@ char *_strdup(char *str);
 char *_getenv(char *PATH);
 int _execute(char *argv[]);
 char **_allocate_strtoke(char *value);
-void handl_built_fnc(char *cmd, char **args);
+int handl_built_fnc(char *cmd, char **args);
 void environment_fnc(char **args __attribute((unused)));
 void exit_fnc(char **args);
 char *get_path(char *command);
@@ -50,7 +50,9 @@ int _setenv(const char *name, const char *value, int overwrite);
 int is_environment(char *name);
 int concat_env(char *env_name, char *env_value);
 void setenv_fnc(char **args);
-/* unssetenv */
+/* unsetenv */
 int _unsetenv(char *name);
+/* cd */
+int _chdir(char *path);
 
 #endif
