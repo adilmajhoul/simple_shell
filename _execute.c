@@ -12,6 +12,13 @@ int _execute(char *argv[])
 
     /* Check if command is a built-in function */
     handl_built_fnc(argv[0], argv);
+    /*change directories*/
+    if (_strcmp(argv[0], "cd") == 0)
+    {
+        if(_chdir(argv[1]) != 1)
+            return(1);
+        return(0);
+    }
     /*if command doesn't exist don't fork*/
     path_cmd = get_path(argv[0]);
     if (path_cmd == NULL)
