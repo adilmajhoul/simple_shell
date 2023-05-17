@@ -19,6 +19,7 @@ int _execute(char *argv[])
             return (1);
         return (0);
     }
+
     /*if command doesn't exist don't fork*/
     path_cmd = get_path(argv[0]);
     if (path_cmd == NULL && !built_in_flag)

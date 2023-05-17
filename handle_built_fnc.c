@@ -32,5 +32,12 @@ int handl_built_fnc(char *cmd, char **args)
 		_unsetenv(args[1]);
 		return (1);
 	}
+	/*
+		if (_strcmp(cmd, "cd") == 0)
+		{
+			if (_chdir(args[1]) != 1)
+				return (1);
+		}
+	*/
 	return (0);
 }
