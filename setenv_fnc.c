@@ -12,16 +12,16 @@ void setenv_fnc(char **args)
         ;
     /* Check if there are only two arguments */
 
-    if (i == 3) // Change this condition to 3 because args[0] is probably the command itself
+    if (i == 3) /*Change this condition to 3 because args[0] is probably the command itself*/
     {
         _setenv(args[1], args[2], 1);
 
-        // Don't free args here. It might be used later in the program.
+        /*Don't free args here. It might be used later in the program.*/
     }
     else
     {
         perror("setenv failed");
 
-        // Don't free args here. It might be used later in the program.
+        /*Don't free args here. It might be used later in the program.*/
     }
 }

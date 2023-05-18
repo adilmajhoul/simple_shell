@@ -10,7 +10,7 @@
 int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		 __attribute__((unused)) char **envp)
 {
-	char *cmd = NULL, *prompt = "$ ";
+	char *cmd = NULL, *prompt = "$ ", *token_cmd;
 	char **argu;
 	ssize_t len = 0;
 	size_t size = 0;
@@ -42,7 +42,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		if (len == 1 || cmd[0] == '\n' || handle_space_tab(cmd) == 1)
 			continue;
 
-		char *token_cmd = strtok(cmd, ";"); // Tokenize the command using ";"
+		token_cmd = strtok(cmd, ";"); /*Tokenize the command using ";"*/
 		while (token_cmd)
 		{
 			/* split command into command name and arguments */
@@ -50,7 +50,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			/* child born and execute command */
 			_execute(argu);
 			free(argu);					   /* free allocated memory of argu */
-			token_cmd = strtok(NULL, ";"); // Update token_cmd with next token
+			token_cmd = strtok(NULL, ";"); /*Update token_cmd with next token*/
 		}
 	}
 	free(cmd);
