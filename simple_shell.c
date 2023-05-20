@@ -41,7 +41,8 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		/*prinnt new line without error*/
 		if (len == 1 || cmd[0] == '\n' || handle_space_tab(cmd) == 1)
 			continue;
-
+		/*deal with comment*/
+		shell_comments(cmd);
 		token_cmd = strtok(cmd, ";"); /*Tokenize the command using ";"*/
 		while (token_cmd)
 		{

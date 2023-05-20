@@ -54,5 +54,6 @@ void setenv_fnc(char **args);
 int _unsetenv(char *name);
 /* cd */
 int _chdir(char *path);
-
+/*comment*/
+void shell_comments(char *cmd);
 #endif
