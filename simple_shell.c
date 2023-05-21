@@ -43,11 +43,19 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			continue;
 		/*deal with comment*/
 		shell_comments(cmd);
+		if (cmd[0] == '\0')
+			continue;
 		token_cmd = strtok(cmd, ";"); /*Tokenize the command using ";"*/
 		while (token_cmd)
 		{
 			/* split command into command name and arguments */
 			argu = _allocate_strtoke(token_cmd);
+			if (argu[0] == NULL || argu[0][0] == '\0')
+			{
+				free(argu);
+				token_cmd = strtok(NULL, ";");
+				continue;
+			}
 			/* child born and execute command */
 			_execute(argu);
 			free(argu);					   /* free allocated memory of argu */
