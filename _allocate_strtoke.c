@@ -6,7 +6,7 @@
  */
 char **_allocate_strtoke(char *value)
 {
-    char *input_cpy, *token, *delim = " \n \t";
+    char *input_cpy, *token, *delim = " \n\t\"";
     char **tokens;
     int num_tokens = 0, i = 0;
 
