@@ -15,7 +15,7 @@ char *get_path(char *command)
 	{
 		/* Check if file exists */
 		if (access(command, F_OK) == 0)
-			return command;
+			return _strdup(command);
 		else
 			return NULL;
 	}
