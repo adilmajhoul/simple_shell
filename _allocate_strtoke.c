@@ -47,7 +47,7 @@ char **_allocate_strtoke(char *value)
                 free(tokens[j]);
             free(tokens);
             free(input_cpy);
-            return (NULL);
+            return (NULL); /*return null if it is failed*/
         }
 
         token = _strtok(NULL, delim);
