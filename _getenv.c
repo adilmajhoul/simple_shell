@@ -10,6 +10,7 @@ char *_getenv(char *PATH)
 	char *value = NULL;
 	int i = 0;
 	size_t len = _strlen(PATH);
+
 	for (; holder[i]; i++)
 	{
 		if (strncmp(PATH, holder[i], len) == 0 && (holder[i][len] == '='))
