@@ -62,5 +62,10 @@ int _execute(char *argv[])
 	wait(&status);
 	if (path_cmd)
 		free(path_cmd);
+	if (WIFEXITED(status))
+		return WEXITSTATUS(status);
+	else
+		return 2;
+
 	return (WEXITSTATUS(status));
 }
