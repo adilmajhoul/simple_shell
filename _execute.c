@@ -4,24 +4,23 @@
  * execute_command - executes a command with the given path
  * @path_cmd: path of the command
  * @argv: array of arguments
- * Return: 0 on success, 2 on failure
+ * Return: void
  */
-int execute_command(char *path_cmd, char *argv[])
+void execute_command(char *path_cmd, char *argv[])
 {
 	if (execve(path_cmd, argv, environ) == -1)
 	{
 		perror("Command not found");
 		if (path_cmd)
 			free(path_cmd);
-		exit(2);
+		exit(EXIT_FAILURE);
 	}
-	return (0);
 }
 
 /**
  * _execute - executes the command
  * @argv: array of arguments
- * Return: exit value of execute_command or built-in command
+ * Return: void
  */
 int _execute(char *argv[])
 {
@@ -55,12 +54,13 @@ int _execute(char *argv[])
 		perror("Error (fork)");
 		if (path_cmd)
 			free(path_cmd);
-		exit(2);
+		exit(EXIT_FAILURE);
 	}
 	else if (born == 0)
 		execute_command(path_cmd, argv);
 	wait(&status);
+	/*printf("value of child %d\n", status);*/
 	if (path_cmd)
 		free(path_cmd);
-	return (WEXITSTATUS(status));
+	return (status);
 }
