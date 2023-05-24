@@ -75,7 +75,6 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			token_cmd = strtok(NULL, ";\n");
 		}
 	}
-	getline(NULL, NULL, NULL);
 	free(cmd);
 	return (0);
 }

@@ -25,6 +25,8 @@ extern char **environ;
 #include <sys/stat.h>
 #include <string.h>
 #include <ctype.h>
+#include <stddef.h>
+#include <stdlib.h>
 /*functions_helper*/
 int _putchar(char c);
 int _strlen(char *s);
