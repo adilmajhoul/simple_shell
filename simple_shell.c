@@ -24,8 +24,9 @@ void free_tokens(char **tokens)
 void cleanup_and_exit(char *cmd)
 {
 	/*_puts("Goodbye Lagend :)\n");*/
+	_putchar('\n');
 	free(cmd);
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -51,7 +52,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		else
 			_puts(prompt);
 		len = _getline(&cmd, &size, stdin);
-		if (len == EOF)
+		if (len == -1)
 			cleanup_and_exit(cmd);
 		if (cmd[len - 1] == '\n')
 			cmd[len - 1] = '\0';
