@@ -38,7 +38,7 @@ void cleanup_and_exit(char *cmd)
 int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		 __attribute__((unused)) char **envp)
 {
-	char *cmd = NULL, *prompt = "$ ", *token_cmd;
+	char *cmd = NULL, *prompt = "#cisfun$ ", *token_cmd;
 	char **argu;
 	ssize_t len = 0;
 	size_t size = 0;
