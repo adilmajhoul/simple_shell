@@ -24,6 +24,7 @@ void execute_command(char *path_cmd, char *argv[])
  */
 int _execute(char *argv[])
 {
+	char *err = "sh: 1: ";
 	char *path_cmd = NULL;
 	pid_t born;
 	int status;
@@ -39,7 +40,9 @@ int _execute(char *argv[])
 
 	if (path_cmd == NULL && !built_in_flag)
 	{
-		perror("./shell: ");
+		write(STDERR_FILENO, err, _strlen(err));
+        write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+        write(STDERR_FILENO, ": not found\n",13);
 		return (100);
 	}
 	if (built_in_flag)
