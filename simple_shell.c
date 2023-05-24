@@ -30,20 +30,6 @@ void cleanup_and_exit(char *cmd)
 }
 
 /**
- * check_exit_condition
- * @cmd: command string to free
- */
-int check_exit_condition(char *cmd)
-{
-	if (strcmp(cmd, "exit") == 0 || (cmd[0] == '-' && isdigit(cmd[1])))
-	{
-		free(cmd);
-		return (2);
-	}
-
-	return (0);
-}
-/**
  * main - simple shell
  * @argc: number of arguments
  * @argv: arguments
@@ -58,7 +44,6 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 	ssize_t len = 0;
 	size_t size = 0;
 	bool flag = true;
-	int exit_code;
 
 	while (1 && flag)
 	{
@@ -66,26 +51,16 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			flag = false;
 		else
 			_puts(prompt);
-
 		len = _getline(&cmd, &size, stdin);
 		if (len == -1)
 			cleanup_and_exit(cmd);
-
 		if (cmd[len - 1] == '\n')
 			cmd[len - 1] = '\0';
-
 		if (len == 1 || cmd[0] == '\n' || handle_space_tab(cmd) == 1)
 			continue;
-
 		shell_comments(cmd);
-
 		if (cmd[0] == '\0')
 			continue;
-
-		exit_code = check_exit_condition(cmd);
-		if (exit_code == 2)
-			return 2;
-
 		token_cmd = strtok(cmd, ";\n");
 		while (token_cmd)
 		{
@@ -100,8 +75,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			token_cmd = strtok(NULL, ";\n");
 		}
 	}
-
 	getline(NULL, NULL, NULL);
 	free(cmd);
-	return 0;
+	return (0);
 }
