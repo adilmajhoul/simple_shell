@@ -24,6 +24,7 @@ extern char **environ;
 #include <stdbool.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <ctype.h>
 /*functions_helper*/
 int _putchar(char c);
 int _strlen(char *s);
