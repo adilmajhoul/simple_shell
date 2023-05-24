@@ -26,7 +26,7 @@ void cleanup_and_exit(char *cmd)
 	/*_puts("Goodbye Lagend :)\n");*/
 	_putchar('\n');
 	free(cmd);
-	exit(EXIT_SUCCESS);
+	exit(2);
 }
 
 /**
@@ -44,6 +44,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 	ssize_t len = 0;
 	size_t size = 0;
 	bool flag = true;
+	int exit_value;
 
 	while (1 && flag)
 	{
@@ -70,12 +71,12 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 				token_cmd = strtok(NULL, ";");
 				continue;
 			}
-			_execute(argu);
+			exit_value = _execute(argu);
 			free_tokens(argu);
 			token_cmd = strtok(NULL, ";");
 		}
 	}
 	getline(NULL, NULL, NULL);
 	free(cmd);
-	return (0);
+	return (exit_value);
 }
