@@ -54,9 +54,11 @@ int is_environment(char *name);
 int concat_env(char *env_name, char *env_value);
 void setenv_fnc(char **args);
 extern char **__environ;
+void print_env(void);
 /* unsetenv */
 int _unsetenv(char *name);
 extern char **__environ;
+void print_env(void);
 /* cd */
 int _chdir(char *path);
 /*comment*/

@@ -47,7 +47,17 @@ int concat_env(char *env_name, char *env_value)
 
 	return (0);
 }
+/**
+ * print_env - prints the environment
+ * Return: void
+ */
+void print_env(void)
+{
+	int i = 0;
 
+	for (; environ[i] != NULL; i++, _putchar('\n'))
+		_puts(environ[i]);
+}
 /**
  * _setenv - sets the value of an environment variable
  * @name: the name of the environment variable to set
@@ -58,19 +68,25 @@ int concat_env(char *env_name, char *env_value)
  */
 int _setenv(const char *name, const char *value, int overwrite)
 {
-	/*overwrite = 1*/
+	/*overwrite */
 	if (overwrite)
 	{
 		if (concat_env((char *)name, (char *)value) == 0)
+		{
+			print_env();
 			return (0);
+		}
 	}
-	/*overwrite = 0*/
+	/* dont overwrite */
 	else
 	{
 		if (is_environment((char *)name) != 1)
 		{
 			if (concat_env((char *)name, (char *)value) == 0)
+			{
+				print_env();
 				return (0);
+			}
 		}
 	}
 

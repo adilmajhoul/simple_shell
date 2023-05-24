@@ -24,6 +24,7 @@ int _unsetenv(char *name)
 				environ[j] = environ[j + 1];
 			}
 			environ[j] = NULL;
+			print_env();
 			return (0);
 		}
 	}
