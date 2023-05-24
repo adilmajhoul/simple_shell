@@ -1,5 +1,18 @@
 #include "shell.h"
 /**
+ * helper_allocate_strtoke - helper function
+ * @input_cpy: input
+ * Return: NOTHING
+ */
+void helper_allocate_strtoke(char *input_cpy)
+{
+	if (!input_cpy)
+	{
+		perror("strdup() failed");
+		return;
+	}
+}
+/**
  * _allocate_strtoke  - allocates memory for the tokens
  * @value: string to be tokenized
  * Return: tokens
@@ -11,11 +24,7 @@ char **_allocate_strtoke(char *value)
 	int num_tokens = 0, i = 0, j;
 
 	input_cpy = strdup(value);
-	if (!input_cpy)
-	{
-		perror("strdup() failed");
-		return (NULL);
-	}
+	helper_allocate_strtoke(input_cpy);
 	token = _strtok(value, delim);
 	while (token)
 	{
@@ -38,7 +47,7 @@ char **_allocate_strtoke(char *value)
 		{
 			perror("strdup() failed");
 			for (j = 0; j < i; j++)
-			free(tokens[j]);
+				free(tokens[j]);
 			free(tokens);
 			free(input_cpy);
 			return (NULL);

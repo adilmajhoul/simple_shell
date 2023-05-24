@@ -14,38 +14,45 @@ int _putchar(char c)
  * _strlen - returns the length of a string
  * @s: string to evaluate
  * Return: the length of the string
-*/
+ */
 int _strlen(char *s)
 {
-    char *p = s;
+	char *p = s;
 
-    while (*p)
-        p++;
-    return (p - s);
+	while (*p)
+		p++;
+	return (p - s);
 }
-/***/
-char _puts (char *str)
+/**
+ * _puts - ...
+ * @str: ...
+ * Return: ...
+ */
+char _puts(char *str)
 {
-    int i;
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        _putchar(str[i]);
-    }
-    return (str[i]);
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
+	return (str[i]);
 }
 /**
  * _strcpy - from dest to source
  * @dest: destination
  * @src: source
  * Return: dest
-*/
+ */
 char *_strcpy(char *dest, char *src)
 {
-    int i = 0;
-    for (; src[i] != '\0'; i++)
-    {
-        dest[i] = src[i];
-    }
-    dest[i] = '\0';
-    return (dest);
+	int i = 0;
+
+	for (; src[i] != '\0'; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+
+	return (dest);
 }

@@ -4,7 +4,6 @@
  * handl_built_fnc - handles the built in functions
  * @cmd: command
  * @args: arguments
- * @status: status
  * Return: 0 if not found, 1 if found
  */
 int handl_built_fnc(char *cmd, char **args)
@@ -32,12 +31,5 @@ int handl_built_fnc(char *cmd, char **args)
 		_unsetenv(args[1]);
 		return (1);
 	}
-	/*
-		if (_strcmp(cmd, "cd") == 0)
-		{
-			if (_chdir(args[1]) != 1)
-				return (1);
-		}
-	*/
 	return (0);
 }

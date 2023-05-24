@@ -6,22 +6,17 @@
  */
 void setenv_fnc(char **args)
 {
-    int i = 0;
-    /* Count number of arguments */
-    for (i = 0; args[i] != NULL; i++)
-        ;
-    /* Check if there are only two arguments */
+	int i = 0;
 
-    if (i == 3) /*Change this condition to 3 because args[0] is probably the command itself*/
-    {
-        _setenv(args[1], args[2], 1);
+	for (i = 0; args[i] != NULL; i++)
+		;
 
-        /*Don't free args here. It might be used later in the program.*/
-    }
-    else
-    {
-        perror("setenv failed");
-
-        /*Don't free args here. It might be used later in the program.*/
-    }
+	if (i == 3)
+	{
+		_setenv(args[1], args[2], 1);
+	}
+	else
+	{
+		perror("setenv failed");
+	}
 }

@@ -2,10 +2,10 @@
 
 /**
  * environment_fnc - prints the environment
- * @args__attribute((unused)): unused arguments
+ * @args: unused arguments
  * Return: void
-*/
-void environment_fnc(char **args __attribute((unused)))
+ */
+void environment_fnc(char **args __attribute__((unused)))
 {
 	int i = 0;
 

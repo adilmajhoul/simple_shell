@@ -1,9 +1,13 @@
 #include "shell.h"
-char *cmd = NULL;
-
+/**
+ * free_tokens - helper function
+ * @tokens: tokens to free
+ * Return: nothing
+ */
 void free_tokens(char **tokens)
 {
 	int i = 0;
+
 	while (tokens[i] != NULL)
 	{
 		free(tokens[i]);
@@ -13,7 +17,17 @@ void free_tokens(char **tokens)
 	free(tokens);
 }
 
-/*by me*/
+/**
+ * cleanup_and_exit - frees allocated memory and exits the program
+ * @cmd: command string to free
+ */
+void cleanup_and_exit(char *cmd)
+{
+	_puts("Goodbye Lagend :)\n");
+	free(cmd);
+	exit(EXIT_FAILURE);
+}
+
 /**
  * main - simple shell
  * @argc: number of arguments
@@ -32,52 +46,35 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 
 	while (1 && flag)
 	{
-		/**
-		 * check if input that is used with echo is no
-		 * longer readable from a terminal
-		 */
 		if (isatty(STDIN_FILENO) == 0)
 			flag = false;
 		else
-			_puts(prompt); /*write the prompt*/
-		/*get input from user*/
+			_puts(prompt);
 		len = _getline(&cmd, &size, stdin);
-		/*if getline fails free allocated memory*/
 		if (len == EOF)
-		{
-			_puts("Goodbye Lagend :)\n");
-			free(cmd);
-			exit(EXIT_FAILURE);
-		}
-		/*replace newline with null character*/
+			cleanup_and_exit(cmd);
 		if (cmd[len - 1] == '\n')
 			cmd[len - 1] = '\0';
-		/*prinnt new line without error*/
 		if (len == 1 || cmd[0] == '\n' || handle_space_tab(cmd) == 1)
 			continue;
-		/*deal with comment*/
 		shell_comments(cmd);
 		if (cmd[0] == '\0')
 			continue;
-		token_cmd = strtok(cmd, ";"); /*Tokenize the command using ";"*/
+		token_cmd = strtok(cmd, ";");
 		while (token_cmd)
 		{
-			/* split command into command name and arguments */
 			argu = _allocate_strtoke(token_cmd);
-
 			if (argu[0] == NULL || argu[0][0] == '\0')
 			{
 				token_cmd = strtok(NULL, ";");
 				continue;
 			}
-
-			/* child born and execute command */
 			_execute(argu);
-			free_tokens(argu);			   /* free allocated memory of argu */
-			token_cmd = strtok(NULL, ";"); /*Update token_cmd with next token*/
+			free_tokens(argu);
+			token_cmd = strtok(NULL, ";");
 		}
 	}
 	getline(NULL, NULL, NULL);
 	free(cmd);
-	return 0;
+	return (0);
 }
