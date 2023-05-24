@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * exit_fnc - exits the shell
  * @args: arguments
@@ -12,7 +11,7 @@ void exit_fnc(char **args)
 	/* Count number of arguments */
 	for (i = 0; args[i] != NULL; i++)
 		;
-
+	/* Check if there is only one argument */
 	if (i == 1)
 	{
 		free(args);
