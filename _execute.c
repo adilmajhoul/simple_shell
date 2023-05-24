@@ -39,7 +39,7 @@ int _execute(char *argv[])
 
 	if (path_cmd == NULL && !built_in_flag)
 	{
-		perror("walaaaa");
+		perror("./shell: ");
 		return (100);
 	}
 	if (built_in_flag)
