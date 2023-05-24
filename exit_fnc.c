@@ -28,6 +28,6 @@ void exit_fnc(char **args)
 	{
 		perror("exit does not work");
 		free(args);
-		exit(1);
+		exit(2);
 	}
 }
