@@ -23,7 +23,7 @@ void free_tokens(char **tokens)
  */
 void cleanup_and_exit(char *cmd)
 {
-	_puts("Goodbye Lagend :)\n");
+	/*_puts("Goodbye Lagend :)\n");*/
 	free(cmd);
 	exit(EXIT_FAILURE);
 }
