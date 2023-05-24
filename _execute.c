@@ -59,7 +59,7 @@ int _execute(char *argv[])
 	else if (born == 0)
 		execute_command(path_cmd, argv);
 	wait(&status);
-	printf("value of child %d\n", status);
+	/*printf("value of child %d\n", status);*/
 	if (path_cmd)
 		free(path_cmd);
 	return (status);
