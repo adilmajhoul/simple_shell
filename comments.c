@@ -7,16 +7,19 @@
 void shell_comments(char *cmd)
 {
 	int i;
+	int quotes = 0;
 
-	/*if (strstr(cmd, "echo ") != NULL || strstr(cmd, "/bin/echo ") != NULL)*/
-	/*return; */
 
 	for (i = 0; cmd[i] != '\0'; i++)
 	{
-		if (cmd[i] == '#')
+		if ((cmd [i] == '\'' || cmd[i] == '\"') && !quotes)
+			quotes = 1;
+		else if ((cmd [i] == '\'' || cmd[i] == '\"') && !quotes)
+			quotes = 0;
+		else if (!quotes && cmd[i] == '#')
 		{
-			cmd[i] = '\0'; /*replace # with null character*/
-			break;		   /*stop counting the line after # cmnt is found*/
+			cmd[i] = '\0';
+			break;
 		}
 	}
 }
