@@ -8,10 +8,8 @@ void shell_comments(char *cmd)
 {
 	int i;
 
-	/*
-	if (strstr(cmd, "echo ") != NULL || strstr(cmd, "/bin/echo ") != NULL)
-			return;
-			*/
+	/*if (strstr(cmd, "echo ") != NULL || strstr(cmd, "/bin/echo ") != NULL)*/
+	/*return; */
 
 	for (i = 0; cmd[i] != '\0'; i++)
 	{
