@@ -7,6 +7,7 @@
 void exit_fnc(char **args)
 {
 	int i = 0;
+	free(args);
 
 	/* Count number of arguments */
 	for (i = 0; args[i] != NULL; i++)
