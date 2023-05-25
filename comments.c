@@ -13,12 +13,15 @@ void shell_comments(char *cmd)
 	{
 		if ((cmd[i] == '\'' || cmd[i] == '\"') && !quotes)
 			quotes = 1;
-		else if ((cmd[i] == '\'' || cmd[i] == '\"') && !quotes)
+		else if ((cmd[i] == '\'' || cmd[i] == '\"') && quotes)
 			quotes = 0;
 		else if (!quotes && cmd[i] == '#')
 		{
-			cmd[i] = '\0';
-			break;
+			if (i == 0 || cmd[i - 1] == ' ')
+			{
+				cmd[i] = '\0';
+				break;
+			}
 		}
 	}
 }
