@@ -44,6 +44,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 	ssize_t len = 0;
 	size_t size = 0;
 	bool flag = true;
+	int last_status = 0;
 
 	while (1 && flag)
 	{
@@ -70,12 +71,12 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 				token_cmd = strtok(NULL, ";\n");
 				continue;
 			}
-			_execute(argu);
+			last_status = _execute(argu);
 			free_tokens(argu);
 			token_cmd = strtok(NULL, ";\n");
 		}
 	}
 	getline(NULL, NULL, NULL);
 	free(cmd);
-	return (0);
+	return (last_status);
 }
