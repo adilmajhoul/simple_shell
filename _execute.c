@@ -26,7 +26,7 @@ int _execute(char *argv[])
 {
 	char *path_cmd = NULL;
 	pid_t born;
-	int status;
+	int status, i;
 	int built_in_flag = handl_built_fnc(argv[0], argv);
 
 	if (_strcmp(argv[0], "cd") == 0)
@@ -48,19 +48,21 @@ int _execute(char *argv[])
 			free(path_cmd);
 		return (1);
 	}
-	born = fork();
-	if (born == -1)
+	for (i = 0; i < 4; i++)
 	{
-		perror("Error (fork)");
-		if (path_cmd)
-			free(path_cmd);
-		exit(EXIT_FAILURE);
+		born = fork();
+		if (born == -1)
+		{
+			perror("Error (fork)");
+			if (path_cmd)
+				free(path_cmd);
+			exit(EXIT_FAILURE);
+		}
+		else if (born == 0)
+			execute_command(path_cmd, argv);
+		wait(&status);
 	}
-	else if (born == 0)
-		execute_command(path_cmd, argv);
-	wait(&status);
-	/*printf("value of child %d\n", status);*/
 	if (path_cmd)
 		free(path_cmd);
-	return (status);
+	return(status);
 }
