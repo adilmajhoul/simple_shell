@@ -40,7 +40,7 @@ int _execute(char *argv[])
 	if (path_cmd == NULL && !built_in_flag)
 	{
 		perror(argv[0]);
-		return (100);
+		return (2);
 	}
 	if (built_in_flag)
 	{
