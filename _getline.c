@@ -10,33 +10,45 @@
 
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	char *buf = NULL;
-	size_t buf_size = 0;
+	char *buf;
+	ssize_t i = 0, j;
 	ssize_t bytes_read;
 
-	if (stream == NULL)
-	{
-		free(*lineptr);
-		*lineptr = NULL;
-		*n = 0;
-		return (0);
-	}
+	if (!lineptr || !n || !stream)
+		return (-1);
 
-	bytes_read = getline(&buf, &buf_size, stream);
+	if (*n == 0)
+		*n = 100;
 
-	if (bytes_read == -1)
+	buf = malloc(*n + 1);
+	if (!buf)
+		return (-1);
+
+	bytes_read = read(fileno(stream), buf, *n);
+
+	if (bytes_read < 0)
 	{
 		free(buf);
-		free(*lineptr);
-		*lineptr = NULL;
-		*n = 0;
-	}
-	else
-	{
-		free(*lineptr);
-		*lineptr = buf;
-		*n = buf_size;
+		return (-1);
 	}
 
-	return (bytes_read);
+	while (buf[i] != '\n' && buf[i] != '\0')
+		i++;
+
+	buf[i] = '\0';
+
+	if (*lineptr == NULL)
+	{
+		*lineptr = malloc(i + 1);
+		if (!lineptr)
+			return -1;
+	}
+
+	for (j = 0; j <= i; j++)
+	{
+		(*lineptr)[j] = buf[j];
+	}
+
+	free(buf);
+	return (i);
 }
